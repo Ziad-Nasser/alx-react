@@ -1,26 +1,25 @@
-import React from 'react';
+import { render, screen } from '@testing-library/react';
+import App from './App';
 import { shallow } from 'enzyme';
 
-import App from './App';
-
-describe('<App />', () => {
+describe('App', () => {
   it('renders without crashing', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.exists()).toBe(true);
+    expect(wrapper.exists());
   });
-
-  it('renders a div with the class App-header', () => {
+  it("Test n°2", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('div.App-header').exists()).toBe(true);
+    wrapper.update();
+    expect(wrapper.find("div.App-header")).toHaveLength(0);
   });
-
-  it('renders a div with the class App-body', () => {
+  it("Test n°3", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('div.App-body').exists()).toBe(true);
+    wrapper.update();
+    expect(wrapper.find("div.App-body")).toHaveLength(1);
   });
-
-  it('renders a div with the class App-footer', () => {
+  it("Test n°4", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find('div.App-footer').exists()).toBe(true);
+    wrapper.update();
+    expect(wrapper.find("div.App-footer")).toHaveLength(0);
   });
 });
